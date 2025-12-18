@@ -38,8 +38,6 @@
       <div id="ketQua" class="hidden">
         <p id="thongBao"></p>
 
-        <a id="discord" href="LINK_DISCORD" target="_blank">
-          Tham gia Discord
         </a>
         <a id="roblox" href="https://www.roblox.com/vi/communities/7636723/Peoples-Vietnam-Army#!/about" target="_blank">
           Tham gia Group Roblox
@@ -68,7 +66,6 @@
       const name = document.getElementById("nameInput").value.trim();
       const ketQua = document.getElementById("ketQua");
       const thongBao = document.getElementById("thongBao");
-      const discord = document.getElementById("discord");
       const roblox = document.getElementById("roblox");
 
       ketQua.classList.add("hidden");
@@ -80,14 +77,14 @@
       setTimeout(() => {
         if (danhSachTrungTuyen.includes(name)) {
           thongBao.innerText =
-            "Chúc mừng bạn " +
+            "🎉Chúc mừng bạn🎉 " +
             name +
             " đã trúng tuyển vào nghĩa vụ quân sự, hãy gia nhập group để được hướng dẫn nhập ngũ!";
           discord.style.display = "block";
           roblox.style.display = "block";
         } else {
           thongBao.innerText =
-            "Rất tiếc, bạn chưa trúng tuyển trong đợt tuyển dụng này.";
+            "💔Rất tiếc, bạn chưa trúng tuyển trong đợt tuyển dụng này.";
           thongBao.classList.add("fail");
           discord.style.display = "none";
           roblox.style.display = "none";
@@ -102,3 +99,4 @@
 
 </body>
 </html>
+
