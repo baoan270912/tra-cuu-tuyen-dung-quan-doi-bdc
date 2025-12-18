@@ -1,0 +1,256 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url("background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+}
+
+/* Lớp phủ tối */
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  min-height: 100vh;
+  padding-top: 60px;
+}
+
+/* Tiêu đề */
+.main-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffd700;
+  margin-bottom: 30px;
+}
+
+/* Khung */
+.container {
+  width: 420px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+  animation: slideUp 0.9s ease;
+}
+
+/* Tra cứu */
+.subtitle {
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+}
+
+/* Ô nhập */
+.input-box {
+  width: 90%;
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  text-align: center;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-box:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.8);
+  background-color: rgba(255, 255, 255, 0.95);
+  color: black;
+}
+
+/* Khung quét */
+.scan-box {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+/* Ánh sáng quét liên tục, nghiêng phải */
+.scan-box::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -120%;
+  width: 60%;
+  height: 140%;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.9) 50%,
+    transparent 70%
+  );
+  transform: skewX(-15deg);
+  animation: scanLoop 3s linear infinite;
+  pointer-events: none;
+}
+
+/* Nút */
+.search-btn {
+  position: relative;
+  overflow: hidden;
+  padding: 8px 28px;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* Sóng */
+.search-btn span {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Kết quả */
+#ketQua {
+  margin-top: 20px;
+  animation: slideResult 0.7s ease;
+}
+
+a {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #263238;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+a:hover {
+  background-color: #37474f;
+}
+
+/* Trượt */
+.fail {
+  color: #ff8a80;
+  font-weight: bold;
+  animation: slideDown 0.6s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideResult {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes scanLoop {
+  from {
+    left: -120%;
+  }
+  to {
+    left: 120%;
+  }
+}/* Logo BDC nền mờ */
+/* Logo BDC bên trái – nền mờ */
+.bg-logo {
+  position: fixed;
+  top: 50%;
+  left: 5%;
+  width: 300px;          /* TO BẰNG LOGO QĐ */
+  opacity: 0.12;
+  z-index: 1;
+  pointer-events: none;
+  animation: logoPulseLeft 6s ease-in-out infinite;
+}
+
+
+
+/* Đảm bảo nội dung nổi lên trên logo */
+.overlay,
+.container,
+.main-title {
+  position: relative;
+  z-index: 2;
+}
+@keyframes logoPulseLeft {
+  0% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.05);
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+/* Logo Quân đội bên phải – nền mờ */
+.bg-logo-right {
+  position: fixed;
+  top: 50%;
+  right: 5%;
+  width: 300px;
+  opacity: 0.13;
+  z-index: 1;
+  pointer-events: none;
+  animation: logoPulseRight 6s ease-in-out infinite;
+}
+
+
+/* Animation cho logo bên phải */
+@keyframes logoPulseRight {
+  0% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.05);
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+	

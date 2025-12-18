@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tra Cứu Kết Quả Tuyển Dụng</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="overlay">
+<img src="logo.png" class="bg-logo">
+<img src="logo-qdoi.png" class="bg-logo-right">
+
+    <div class="main-title">
+      QUÂN ĐỘI NHÂN DÂN VIỆT NAM | BDC
+    </div>
+
+    <div class="container">
+      <div class="subtitle">Tra Cứu Kết Quả</div>
+
+      <!-- Ô tìm kiếm có ánh sáng quét -->
+      <div class="scan-box">
+        <input
+          type="text"
+          id="nameInput"
+          class="input-box"
+          placeholder="🔍 Nhập tên Roblox để tra cứu"
+        >
+      </div>
+
+      <button
+        class="search-btn"
+        onclick="taoSong(event); traCuu(this)"
+      >
+        Tìm kiếm
+      </button>
+
+      <div id="ketQua" class="hidden">
+        <p id="thongBao"></p>
+
+        <a id="discord" href="LINK_DISCORD" target="_blank">
+          Tham gia Discord
+        </a>
+        <a id="roblox" href="https://www.roblox.com/vi/communities/7636723/Peoples-Vietnam-Army#!/about" target="_blank">
+          Tham gia Group Roblox
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+
+  <script>
+    function taoSong(e) {
+      const btn = e.currentTarget;
+      const span = document.createElement("span");
+      const rect = btn.getBoundingClientRect();
+
+      span.style.left = e.clientX - rect.left + "px";
+      span.style.top = e.clientY - rect.top + "px";
+
+      btn.appendChild(span);
+
+      setTimeout(() => span.remove(), 600);
+    }
+
+    function traCuu(btn) {
+      const name = document.getElementById("nameInput").value.trim();
+      const ketQua = document.getElementById("ketQua");
+      const thongBao = document.getElementById("thongBao");
+      const discord = document.getElementById("discord");
+      const roblox = document.getElementById("roblox");
+
+      ketQua.classList.add("hidden");
+      thongBao.className = "";
+
+      btn.innerText = "Đang kiểm tra...";
+      btn.disabled = true;
+
+      setTimeout(() => {
+        if (danhSachTrungTuyen.includes(name)) {
+          thongBao.innerText =
+            "Chúc mừng bạn " +
+            name +
+            " đã trúng tuyển vào nghĩa vụ quân sự, hãy gia nhập group để được hướng dẫn nhập ngũ!";
+          discord.style.display = "block";
+          roblox.style.display = "block";
+        } else {
+          thongBao.innerText =
+            "Rất tiếc, bạn chưa trúng tuyển trong đợt tuyển dụng này.";
+          thongBao.classList.add("fail");
+          discord.style.display = "none";
+          roblox.style.display = "none";
+        }
+
+        ketQua.classList.remove("hidden");
+        btn.innerText = "Tìm kiếm";
+        btn.disabled = false;
+      }, 700);
+    }
+  </script>
+
+</body>
+</html>
